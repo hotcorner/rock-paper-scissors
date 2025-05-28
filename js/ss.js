@@ -65,13 +65,26 @@ let playRound = (humanChoice, computerChoice)=>{
                 break;
         }
     }
-    console.log(`Human chose ${humanChoice}`);
-    console.log(`Computer chose ${computerChoice}`);
-    console.log(result);
-    console.log(`humans:${humanScore} --- computers:${computerScore}`);
+    let msg = `Human chose ${humanChoice}.\n Computer chose ${computerChoice}.\n ${result}\n humans:${humanScore} --- computers:${computerScore}`;
+    return msg;
+    //console.log(`Human chose ${humanChoice}`);
+    //console.log(`Computer chose ${computerChoice}`);
+    //console.log(result);
+    //console.log(`humans:${humanScore} --- computers:${computerScore}`);
 }
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
+let playGame = (rounds)=>{
 
-playRound(humanSelection, computerSelection);
+    for (let i = 0; i < rounds; i++) {
+        const humanSelection = getHumanChoice();
+        const computerSelection = getComputerChoice();
+        let fullResult = playRound(humanSelection, computerSelection);
+        console.log(fullResult);
+    }
+    const winner = humanScore >= computerScore ? "Game Over. You win." : "Game Over. You lose.";
+    console.log(winner);
+}
+
+
+
+playGame(5);
