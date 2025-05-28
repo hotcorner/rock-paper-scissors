@@ -1,5 +1,6 @@
 let humanScore = 0;
 let computerScore = 0;
+let tie = false;
 
 let getComputerChoice = ()=>{
     const randoNumbo = Math.floor(Math.random()*3);
@@ -24,13 +25,14 @@ let playRound = (humanChoice, computerChoice)=>{
         switch(computerChoice){
             case "Paper":
                 result  = "Tie! Try again.";
+                tie = true;
                 break;
             case "Rock":
                 result  = "Paper covers Rock. You win!";
                 humanScore++;
                 break;
             case "Scissors":
-                result  = "Scissors cuts Paper. Try again.";
+                result  = "Scissors cuts Paper. You lose.";
                 computerScore++;
                 break;
         }
@@ -38,11 +40,12 @@ let playRound = (humanChoice, computerChoice)=>{
     else if(humanChoice=="Rock"){
         switch(computerChoice){
             case "Paper":
-                result  = "Paper covers Rock. Try again.";
+                result  = "Paper covers Rock. You lose.";
                 computerScore++;
                 break;
             case "Rock":
                 result  = "Tie! Try again.";
+                tie = true;
                 break;
             case "Scissors":
                 result  = "Rock beats Scissors. You win!";
@@ -57,11 +60,12 @@ let playRound = (humanChoice, computerChoice)=>{
                 humanScore++;
                 break;
             case "Rock":
-                result  = "Rock beats Scissors. Try again.";
+                result  = "Rock beats Scissors. You lose.";
                 computerScore++;
                 break;
             case "Scissors":
                 result  = "Tie! Try again.";
+                tie = true;
                 break;
         }
     }
@@ -71,11 +75,16 @@ let playRound = (humanChoice, computerChoice)=>{
 
 let playGame = (rounds)=>{
 
-    for (let i = 0; i < rounds; i++) {
+    for (let i = 1; i <= rounds; i++) {
         let humanSelection = getHumanChoice();
         let computerSelection = getComputerChoice();
         let fullResult = playRound(humanSelection, computerSelection);
+        console.log(`Round: ${i}`)
         console.log(fullResult);
+        if (tie) {
+            i--;
+            tie = false;
+        }
     }
     const winner = humanScore >= computerScore ? "Game Over. You win." : "Game Over. You lose.";
     console.log(winner);
