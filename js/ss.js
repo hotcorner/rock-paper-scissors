@@ -1,3 +1,6 @@
+let humanScore = 0;
+let computerScore = 0;
+
 let getComputerChoice = ()=>{
     const randoNumbo = Math.floor(Math.random()*3);
     switch (randoNumbo) {
@@ -8,4 +11,9 @@ let getComputerChoice = ()=>{
     default:
         return "Paper";
     }
+}
+
+let getHumanChoice = ()=>{
+    const humanChoice = prompt("Paper, Rock or Scissors?");
+    return humanChoice;
 }
