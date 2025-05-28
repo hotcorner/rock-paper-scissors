@@ -90,6 +90,4 @@ let playGame = (rounds)=>{
     console.log(winner);
 }
 
-
-
 playGame(5);
