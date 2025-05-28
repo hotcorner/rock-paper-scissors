@@ -67,17 +67,13 @@ let playRound = (humanChoice, computerChoice)=>{
     }
     let msg = `Human chose ${humanChoice}.\n Computer chose ${computerChoice}.\n ${result}\n humans:${humanScore} --- computers:${computerScore}`;
     return msg;
-    //console.log(`Human chose ${humanChoice}`);
-    //console.log(`Computer chose ${computerChoice}`);
-    //console.log(result);
-    //console.log(`humans:${humanScore} --- computers:${computerScore}`);
 }
 
 let playGame = (rounds)=>{
 
     for (let i = 0; i < rounds; i++) {
-        const humanSelection = getHumanChoice();
-        const computerSelection = getComputerChoice();
+        let humanSelection = getHumanChoice();
+        let computerSelection = getComputerChoice();
         let fullResult = playRound(humanSelection, computerSelection);
         console.log(fullResult);
     }
